@@ -120,7 +120,11 @@ let handler = async (m, { conn, usedPrefix, __dirname, participants }) => {
 📡 *Versión:* ${vs}
 🛠️ *Librería:* ${libreria}
 💐 *Fecha:* \`${hora}, ${dia}, ${fechaTxt}\`
-─────────────────────\n\n`.trim()
+·   ·   ·   ·   ·   ·   ·   ·   ·   ·   ·   ·   ·
+
+︶ ︶ ︶ ︶ ︶ ︶ ︶ ︶ ︶ ︶
+
+\n\n`.trim()
 
     const cuerpo = infoUser + `*🍡 Mᴇɴú ᴅɪsᴘᴏɴɪʙʟᴇ:*${menuTexto}`.trim()
 
