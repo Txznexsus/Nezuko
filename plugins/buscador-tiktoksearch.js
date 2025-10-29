@@ -78,15 +78,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
               {
                 name: "cta_url",
                 buttonParamsJson: JSON.stringify({
-                  display_text: "🌷 𝐕𝐞𝐫 𝐞𝐧 𝐓𝐢𝐤𝐓𝐨𝐤",
+                  display_text: "🌷 ᥎ᥱr ᥱᥒ 𝗍іk𝗍᥆k",
                   url: v.url || v.nowm,
                 }),
               },
               {
                 name: "cta_url",
                 buttonParamsJson: JSON.stringify({
-                  display_text: "🕸️ 𝐜𝐚𝐧𝐚𝐥 𝐨𝐟𝐢𝐜𝐢𝐚𝐥",
-                  url: 'https://whatsapp.com/channel/0029VbBPa8EFsn0aLfyZl23j',
+                  display_text: "🪵 ᥴᥲᥒᥲᥣ ᥆𝖿іᥴіᥲᥣ",
+                  url: 'https://whatsapp.com/channel/0029Vb5l5w1CHDyjovjN8s2V',
                 }),
               },
             ],
