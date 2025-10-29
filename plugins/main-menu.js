@@ -28,7 +28,7 @@ let handler = async (m, { conn, usedPrefix, __dirname, participants }) => {
     const pais = phone.getRegionCode() || 'Desconocido 🌐'
     
     const perfil = await conn.profilePictureUrl(conn.user.jid, 'image')
-      .catch(() => 'https://i.pinimg.com/originals/b3/67/d5/b367d513d861de468305c32c6cd22756.jpg')
+      .catch(() => 'https://qu.ax/MjAzQ.jpg')
 
     const channelRD = { 
       id: '120363401983007420@newsletter', 
