@@ -1,76 +1,107 @@
-import pkg from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
-const { proto } = pkg
+import baileys from '@whiskeysockets/baileys'
+const { generateWAMessageFromContent, proto } = baileys
 
-var handler = async (m, { conn }) => {
+let handler = async (m, { conn }) => {
   try {
+    await m.react('🕓')
+
     const group = m.chat
     const metadata = await conn.groupMetadata(group)
     const ppUrl = await conn.profilePictureUrl(group, 'image').catch(_ => 'https://files.catbox.moe/xr2m6u.jpg')
     const pp = await (await fetch(ppUrl)).arrayBuffer()
     const invite = 'https://chat.whatsapp.com/' + await conn.groupInviteCode(group)
     const owner = metadata.owner ? '@' + metadata.owner.split('@')[0] : 'No disponible'
-    const desc = metadata.desc ? `\n*📝 Descripción:*\n${metadata.desc}\n` : ''
+    const desc = metadata.desc ? `\n📝 *Descripción:*\n${metadata.desc}\n` : ''
 
+    const info1 = `🪵 𝙂𝙍𝙐𝙋𝙊 - 𝙄𝙉𝙁𝙊 🍃`
     const info = `
-*⌁☍꒷₊˚ group • link ꒷₊˚⌁*
-
-*🍃 Nombre:* ${metadata.subject}
-*🪵 ID:* ${metadata.id}
-*🌾 Creado por:* ${owner}
-*🦋 Miembros:* ${metadata.participants.length}
+💐 *Nombre:* ${metadata.subject}
+🌳 *ID:* ${metadata.id}
+🍂 *Creador:* ${owner}
+🌷 *Miembros:* ${metadata.participants.length}
 ${desc}
-
-> *🔗 Link del grupo:*
-> ${invite}
+🌾 *Link:* ${invite}
 `.trim()
 
-    const msg = {
-      viewOnceMessage: {
-        message: {
-          interactiveMessage: {
-            body: { text: info },
-            footer: { text: '🍃 Nezuko-Bot' },
-            header: {
-              title: '✨ Información del Grupo',
-              hasMediaAttachment: true,
-              imageMessage: {
-                jpegThumbnail: Buffer.from(pp),
-                caption: metadata.subject
-              }
-            },
-            nativeFlowMessage: {
-              buttons: [
-                {
-                  name: 'cta_copy',
-                  buttonParamsJson: JSON.stringify({
-                    display_text: "📋 Copiar Link",
-                    copy_code: invite
-                  })
-                },
-                {
-                  name: 'cta_url',
-                  buttonParamsJson: JSON.stringify({
-                    display_text: "🌍 Abrir Grupo",
-                    url: invite
-                  })
-                }
-              ]
-            }
-          }
+    const card = {
+      body: proto.Message.InteractiveMessage.Body.fromObject({
+        text: info1
+      }),
+      footer: proto.Message.InteractiveMessage.Footer.fromObject({
+        text: info
+      }),
+      header: proto.Message.InteractiveMessage.Header.fromObject({
+        title: metadata.subject,
+        hasMediaAttachment: true,
+        imageMessage: {
+          jpegThumbnail: Buffer.from(pp)
         }
-      }
+      }),
+      nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
+        buttons: [
+          {
+            name: 'cta_copy',
+            buttonParamsJson: JSON.stringify({
+              display_text: "📋 Copiar Link",
+              copy_code: invite
+            })
+          },
+          {
+            name: 'cta_url',
+            buttonParamsJson: JSON.stringify({
+              display_text: "🌍 Abrir Grupo",
+              url: invite
+            })
+          },
+          {
+            name: 'cta_reply',
+            buttonParamsJson: JSON.stringify({
+              display_text: "📤 Reenviar Link",
+              id: "reenviar_link",
+              reply_text: `🔗 ${invite}`
+            })
+          }
+        ]
+      })
     }
 
-    await conn.relayMessage(m.chat, msg, {})
+    const msg = generateWAMessageFromContent(m.chat, {
+      viewOnceMessage: {
+        message: {
+          messageContextInfo: {
+            deviceListMetadata: {},
+            deviceListMetadataVersion: 2
+          },
+          interactiveMessage: proto.Message.InteractiveMessage.fromObject({
+            body: proto.Message.InteractiveMessage.Body.create({
+              text: `✨ Información del grupo`
+            }),
+            footer: proto.Message.InteractiveMessage.Footer.create({
+              text: '🍃 Nezuko-Bot'
+            }),
+            header: proto.Message.InteractiveMessage.Header.create({
+              hasMediaAttachment: false
+            }),
+            carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
+              cards: [card]
+            })
+          })
+        }
+      }
+    }, { quoted: m })
+
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id })
+    await m.react('✅')
 
   } catch (e) {
     console.error(e)
-    m.reply('❌ Error al obtener la información del grupo.')
+    await m.react('❌')
+    await m.reply('❌ Error al obtener la información del grupo.')
   }
 }
 
-handler.help = ['link']
+handler.help = ['link', 'enlace']
 handler.tags = ['group']
 handler.command = ['link', 'enlace']
 handler.group = true
