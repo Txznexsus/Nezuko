@@ -101,8 +101,8 @@ let handler = async (m, { conn }) => {
 
 ┌ ° 🧃 *⍴іᥒg:* ${latency} ms  
 │ ° 🍁 *ᥣᥲ𝗍ᥱᥒᥴᥡ:* ${latensi.toFixed(4)} ms  
-│ ° 🪴 *rᥲm Usage:* ${usedRAM}/${totalRAM} MB  
-│ ° 🌹 *rᥲm Libre:* ${freeRAM} MB  
+│ ° 🪴 *rᥲm ᥙsᥲgᥱ:* ${usedRAM}/${totalRAM} MB  
+│ ° 🌹 *rᥲm ᥣіᑲrᥱ:* ${freeRAM} MB  
 │ ° 🍀 *ᥴ⍴ᥙ:* ${cpu.split(' @')[0]} (${cores} Núcleos)  
 │ ° 🍓 *ᥲr𝗊ᥙі𝗍ᥱᥴ𝗍ᥙrᥲ:* ${arch}  
 │ ° 🎋 *sіs𝗍ᥱmᥲ:* ${platform.toUpperCase()}  
