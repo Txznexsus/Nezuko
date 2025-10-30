@@ -7,13 +7,13 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
     if (!text) {
       return conn.reply(
         m.chat,
-        `🎋 Ingresa el nombre de la canción o un enlace de YouTube.\n\n> Ejemplo: ${usedPrefix + command} DJ Malam Pagi`,
+        `🌴 Ingresa el nombre de la canción o un enlace de YouTube.\n\n> Ejemplo: ${usedPrefix + command} DJ Malam Pagi`,
         m, fake
       )
     }
 
     await conn.sendMessage(m.chat, { react: { text: "⏳", key: m.key } })
-    await conn.reply(m.chat, '*_🚀 Buscando en Youtube_*', m)
+    await conn.reply(m.chat, '*_🪵 Buscando en Youtube_*', m)
 
     const search = await yts(text)
     const video = search.videos[0]
@@ -48,29 +48,26 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
     const size = await getSize(downloadUrl)
     const sizeStr = size ? formatSize(size) : 'Desconocido'
 
-    const textoInfo = `╔═══❖•ೋ° ⚜️ °ೋ•❖═══╗
-       *🎧 ＹＯＵＴＵＢＥ ＭＰ3 🎶*
-╚═══❖•ೋ° ⚜️ °ೋ•❖═══╝
-🌸 *Título:* 
+    const textoInfo = `🍃 *Título:* 
 > ${meta.title}
-🕒 *Duración:* 
+🍁 *Duración:* 
 > ${meta.duration}
-💾 *Tamaño:* 
+🍀 *Tamaño:* 
 > ${sizeStr}
-🎚 *Calidad:* 
+🌾 *Calidad:* 
 > 128kbps
-📡 *Canal:* 
+🪸 *Canal:* 
 > ${meta.author}
-👁 *Vistas:*
+🌿 *Vistas:*
 > ${meta.views}
-📅 *Publicado:* 
+🌳 *Publicado:* 
 > ${meta.ago}
-🔗 *Enlace:*
+🌷 *Enlace:*
 > ${meta.url}
-🛠 *Servidor usado:* 
+🎋 *Servidor usado:* 
 > ${servidor}
 ────────────────────
-🍬 *Procesando tu canción...*`
+🦋 *Procesando tu canción...*`
 
     const thumb = (await conn.getFile(meta.thumbnail)).data
     await conn.sendMessage(m.chat, { image: thumb, caption: textoInfo, ...fake }, { quoted: m })
@@ -86,7 +83,7 @@ let handler = async (m, { conn, text, command, usedPrefix }) => {
       contextInfo: {
         externalAdReply: {
           showAdAttribution: true,
-          title: '☃️ 𝐘  𝐎 𝐔 𝐓 𝐔 𝐁 𝐄 • 𝐌 𝐔 𝐒 𝐈 𝐂 🚀',
+          title: '🧃 𝒀  𝑶 𝑼 𝑻 𝑼 𝑩 𝑬 • 𝑴 𝑼 𝑺 𝑰 𝑪 🦋',
           body: `Duración: ${meta.duration} | Tamaño: ${sizeStr} | Servidor: ${servidor}`,
           thumbnailUrl: meta.thumbnail,
           mediaType: 2,
