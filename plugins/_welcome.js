@@ -71,7 +71,7 @@ handler.before = async function (m, { conn, participants, groupMetadata }) {
 
   const fkontak = {
     key: { participant: '0@s.whatsapp.net', remoteJid: 'status@broadcast', fromMe: false, id: 'Halo' },
-    message: { locationMessage: { name: '🍉 𝙒𝙚𝙡𝙘𝙤𝙢𝙚 - 𝙆𝙖𝙣𝙚𝙠𝙞 𝙈𝘿 📡', jpegThumbnail: thumbBuffer } },
+    message: { locationMessage: { name: '🍁 ᥕᥱᥣᥴ᥆mᥱ - ᥒᥱzᥙk᥆ ᑲ᥆𝗍 🍃', jpegThumbnail: thumbBuffer } },
     participant: '0@s.whatsapp.net'
   }
 
@@ -97,7 +97,7 @@ handler.before = async function (m, { conn, participants, groupMetadata }) {
         {
           name: 'quick_reply',
           buttonParamsJson: JSON.stringify({
-            display_text: '🌿 ᴍᴇɴᴜ - ᴋᴀɴᴇᴋɪ ᴀɪ 💐',
+            display_text: '🦋 mᥱᥒᥙ - ᥒᥱzᥙk᥆ ᑲ᥆𝗍🍃',
             id: '.menu'
           })
         }
@@ -130,7 +130,7 @@ handler.before = async function (m, { conn, participants, groupMetadata }) {
         {
           name: 'quick_reply',
           buttonParamsJson: JSON.stringify({
-            display_text: '🌿 ᴍᴇɴᴜ - ᴋᴀɴᴇᴋɪ ᴀɪ 💐',
+            display_text: '🦋 mᥱᥒᥙ - ᥒᥱzᥙk᥆ ᑲ᥆𝗍 🍃',
             id: '.menu'
           })
         }
