@@ -20,7 +20,7 @@ export async function before(m, { conn }) {
     },
     message: {
       locationMessage: {
-        name: `🌿 𝐊𝐚𝐧𝐞𝐤𝐢 | 𝐁𝐨𝐭 𝐀𝐈 ⚙️`,
+        name: `🍃 ᥒᥱzᥙk᥆-ᑲ᥆𝗍 🧃`,
         jpegThumbnail: thumbBuffer
       }
     },
@@ -28,8 +28,8 @@ export async function before(m, { conn }) {
   }
 
   const channelRD = { 
-    id: '120363422142340004@newsletter', 
-    name: '🌸 𝗞𝗮𝗻𝗲𝗸𝗶 𝗕𝗼𝘁 | 𝗢𝗳𝗶𝗰𝗶𝗮𝗹 🚀'
+    id: '120363401983007420@newsletter', 
+    name: '=͟͟͞𝗡𝗲𝘇𝘂𝗸𝗼 - 𝗢𝗳𝗶𝗰𝗶𝗮𝗹 𝗖𝗵𝗮𝗻𝗻𝗲𝗹⏤͟͟͞͞★'
   }
 
   const similarity = (a, b) => {
@@ -70,7 +70,7 @@ ${sugerencias}`
   await conn.sendMessage(m.chat, {
     document: { url: 'https://files.catbox.moe/6fj9u7.jpg' },
     mimetype: 'application/pdf',
-    fileName: '🍃 🄴🅁🅁🄾🅁 🚀.pdf',
+    fileName: '🍃 🄴🅁🅁🄾🅁 🍁.pdf',
     caption: texto.trim(),
     mentions: [m.sender],
     contextInfo: {
@@ -81,7 +81,7 @@ ${sugerencias}`
         newsletterName: channelRD.name
       },
       externalAdReply: {
-        title: '   🍉 𝐊𝐚𝐧𝐞𝐤𝐢 𝐁𝐨𝐭 - 𝐀𝐒𝐒𝐈𝐒𝐓𝐀𝐍𝐓 🍓',
+        title: '   🍃 ᥒᥱzᥙk᥆ ᑲ᥆𝗍 - ᥲssіs𝗍ᥲᥒ𝗍 🦋',
         body: 'Asistente inteligente y multifunción.',
         thumbnailUrl: banner,
         mediaType: 1,
