@@ -175,7 +175,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 ૮₍｡˃ ᵕ ˂ ｡₎ა 🚀 *¡Descarga Completa con exito!*
 
-> ☁️ ᴋᴀɴᴇᴋɪ ʙᴏᴛ ɪᴀ | 𝙿𝙾𝚆𝙴𝚁𝙴𝙳 𝙱𝚈 𝚂𝙷𝙰𝙳𝙾𝚆-𝚇𝚈𝚉`.trim()
+> 🦋 ᥒᥱzᥙk᥆-ᑲ᥆𝗍 🍃`.trim()
 
     let thumb = null
     try {
