@@ -10,7 +10,7 @@ const handler = async (m, { conn, text, participants, command }) => {
   const sender = m.pushName || 'Usuario desconocido'
 
 
-  const mensaje = text ? text : '¡Atención a todos! 🚨'
+  const mensaje = text ? text : '¡Atención a todos! 🌳'
   let texto = `﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌
 🍁 𝙈𝙀𝙉𝘾𝙄𝙊𝙉 𝙂𝙀𝙉𝙀𝙍𝘼𝙇 🌴
 ﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌﹌
