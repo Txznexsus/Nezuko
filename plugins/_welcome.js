@@ -18,7 +18,7 @@ async function generarBienvenida({ conn, userId, groupMetadata, chat }) {
 Bienvenid@ al grupo *_${groupMetadata.subject}_*
 
 
-🌴 *_ᥱs⍴ᥱrᥱm᥆s 𝗊ᥙᥱ ძіs𝖿rᥙ𝗍ᥱs ძᥱ ᥱs𝗍ᥱ́._*
+🌴 *_ᥱs⍴ᥱrᥱm᥆s 𝗊ᥙᥱ ძіs𝖿rᥙ𝗍ᥱs ძᥱ ᥱs𝗍ᥱ́ grᥙ⍴᥆._*
 
 🍁 \`іᥒ𝖿᥆ - gr᥆ᥙ⍴:\`
  • mіᥱmᑲr᥆s: ${groupSize}
