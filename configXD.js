@@ -36,7 +36,7 @@ global.dev = "© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ᥒᥱ᥊zᥙs"
 global.author = "© mᥲძᥱ ᥕі𝗍һ ᑲᥡ ᥒᥱ᥊zᥙs"
 global.etiqueta = "𓆩ᥒᥱ᥊zᥙs​᭄"
 global.currency = "¥enes"
-global.banner = "https://qu.ax/MjAzQ.jpg"
+global.banner = "https://qu.ax/rBcij.jpg"
 //global.icono = "https://qu.ax/uReMx.jpg"
 global.catalogo = fs.readFileSync('./lib/catalogo.jpg')
 
