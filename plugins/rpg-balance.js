@@ -12,15 +12,15 @@ let bank = user.bank || 0
 let total = (user.coin || 0) + (user.bank || 0)
 let level = user.level || 0
 let exp = user.exp || 0
-const texto = `╭━━━〔 ⚔️ ʀᴘɢ ꜱʏꜱᴛᴇᴍ - ɪɴꜰᴏʀᴍᴀᴄɪᴏ́ɴ ❖ 〕━━⬣
-│ ᥫ᭡ 𝐄𝐬𝐭𝐚𝐝𝐨 𝐝𝐞𝐥 𝐀𝐝𝐯𝐞𝐧𝐭𝐮𝐫𝐨
+const texto = `╭━━━〔 🎋 ʀᴘɢ ꜱʏꜱᴛᴇᴍ - ɪɴꜰᴏʀᴍᴀᴄɪᴏ́ɴ 🌴 〕━━⬣
+│ 🪵 𝐄𝐬𝐭𝐚𝐝𝐨 𝐝𝐞𝐥 𝐀𝐝𝐯𝐞𝐧𝐭𝐮𝐫𝐨
 │
-│ 🧙‍♂️ Nombre » *${name}*
-│ 💰 Cartera » *¥${coin.toLocaleString()} ${currency}*
-│ 🏦 Banco » *¥${bank.toLocaleString()} ${currency}*
-│ 💎 Total » *¥${total.toLocaleString()} ${currency}*
-│ ⚔️ Nivel » *${level}*
-│ 📖 Experiencia » *${exp} XP*
+│ 🌱 Nombre » *${name}*
+│ 🍁 Cartera » *¥${coin.toLocaleString()} ${currency}*
+│ 🦋 Banco » *¥${bank.toLocaleString()} ${currency}*
+│ 🪴 Total » *¥${total.toLocaleString()} ${currency}*
+│ 🧃 Nivel » *${level}*
+│ 🍃 Experiencia » *${exp} XP*
 ╰━━━━━━━━━━━━━━━━━━━━━━━⬣
 > *Para proteger tu dinero, ¡depósitalo en el banco usando #deposit!*`
   await conn.sendMessage(m.chat, {
