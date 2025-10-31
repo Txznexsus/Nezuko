@@ -1,91 +1,52 @@
 import fetch from "node-fetch"
-
-function formatSize(bytes) {
-  if (bytes === 0 || isNaN(bytes)) return '0 B'
-  const k = 1024
-  const sizes = ['B', 'KB', 'MB', 'GB']
-  const i = Math.floor(Math.log(bytes) / Math.log(k))
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
-}
+import fs from "fs"
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
-    if (!text?.trim()) {
-      return conn.reply(
-        m.chat,
-        `🪵 *іᥒgrᥱsᥲ ᥱᥣ ᥱᥒᥣᥲᥴᥱ ძᥱᥣ ᥎іძᥱ᥆ ძᥱ ᥡ᥆ᥙ𝗍ᥙᑲᥱ 𝗊ᥙᥱ ძᥱsᥱᥲs ძᥱsᥴᥲrgᥲr.*\n\nEjemplo:\n${usedPrefix + command} https://youtu.be/HWjCStB6k4o`,
-        m
-      )
-    }
+    if (!text?.trim()) return conn.reply(m.chat, `🍂 *Ingresa el enlace del video de YouTube*`, m)
 
-    await m.react('🕒')
-    await conn.reply(m.chat, '*_🌿 ძᥱsᥴᥲrgᥲᥒძ᥆ ᥎іძᥱ᥆_*', m, rcanal)
+    const api = `https://api.vreden.my.id/api/v1/download/youtube/video?url=${encodeURIComponent(text)}&quality=360`
+    const res = await fetch(api)
+    if (!res.ok) throw new Error(`Error al obtener datos de la API.`)
+    const json = await res.json()
 
-    let down, meta
-    try {
-      const apiUrl = `https://api.vreden.my.id/api/v1/download/youtube/video?url=${encodeURIComponent(text)}&quality=360`
-      const response = await fetch(apiUrl)
-      if (!response.ok) throw "Error en la API principal."
-      const data = await response.json()
+    if (!json.status || !json.result?.download?.url) throw new Error(`No se pudo descargar el video.`)
 
-      meta = data?.result?.metadata
-      down = data?.result?.download
-      if (!down?.url) throw "No se pudo obtener el enlace de descarga desde la API principal."
+    const video = json.result
+    const { title, duration } = video.metadata
+    const downloadUrl = video.download.url
 
-    } catch (err) {
-      const yupraUrl = `https://api.yupra.com/api/downloader/ytmp4?url=${encodeURIComponent(text)}`
-      const response = await fetch(yupraUrl)
-      if (!response.ok) throw "Error en la API Yupra."
-      const data = await response.json()
+    const head = await fetch(downloadUrl, { method: "HEAD" })
+    const fileSize = head.headers.get("content-length")
+    const fileMB = fileSize ? (Number(fileSize) / 1024 / 1024).toFixed(2) : 0
 
-      down = {
-        url: data.resultado?.formatos?.[0]?.url,
-        filename: `${data.resultado?.titulo || "video"}.mp4`,
-        quality: data.resultado?.formatos?.[0]?.calidad || "360"
-      }
-      if (!down.url) throw "No se pudo obtener el enlace de descarga desde Yupra."
+    const caption = `🌿 *${title}*\n🍉 \`Duracion:\` ${duration.timestamp}`
 
-      meta = { title: down.filename }
-    }
+    await m.react('📥')
 
-    const head = await fetch(down.url, { method: "HEAD" })
-    const size = head.headers.get("content-length")
-
-    let caption
-    if (meta?.author) {l
-      caption = `🦋 *Título:* ${meta.title}
-🌴 *ᥴᥲᥒᥲᥣ:* ${meta.author?.name}
-🪵 *ძᥙrᥲᥴі᥆́ᥒ:* ${meta.duration?.timestamp || "Desconocida"}
-🪴 *᥎іs𝗍ᥲs:* ${meta.views?.toLocaleString() || "?"}
-💐 *⍴ᥙᑲᥣіᥴᥲძ᥆:* ${meta.ago}
-🌱 *ᥴᥲᥣіძᥲძ:* ${down.quality}p
-🧃 *𝗍ᥲmᥲᥒ̃᥆:* ${formatSize(size)}
-────────────────────
-🍃 *ძᥱsᥴᥲrgᥲ Completa...*`
+    if (fileMB > 70) {
+      await conn.sendMessage(m.chat, {
+        document: { url: downloadUrl },
+        mimetype: "video/mp4",
+        fileName: `${title}.mp4`,
+        caption
+      }, { quoted: m })
     } else {
-
-      caption = `🍃 *ძᥱsᥴᥲrgᥲ Completa...*`
+      await conn.sendMessage(m.chat, {
+        video: { url: downloadUrl },
+        caption
+      }, { quoted: m })
     }
-
-    await conn.sendMessage(m.chat, {
-      video: { url: down.url },
-      mimetype: "video/mp4",
-      fileName: down.filename || `${meta.title}.mp4`,
-      caption,
-      thumbnail: meta?.thumbnail ? await (await fetch(meta.thumbnail)).buffer() : null
-    }, { quoted: m })
 
     await m.react('✔️')
-
   } catch (e) {
     console.error(e)
-    conn.reply(m.chat, `*Ocurrió un error:*\n${e}`, m)
+    conn.reply(m.chat, `*Ocurrió un error al procesar el video.*\nVerifica el enlace o inténtalo más tarde.`, m)
   }
 }
 
-handler.help = ["ytmp4 <url>"]
-handler.tags = ["download"]
-handler.command = ["ytmp4", "playmp4"]
-handler.group = true
+handler.help = ['ytmp4 <url>']
+handler.tags = ['descargas']
+handler.command =  ['ytmp4']
 
 export default handler
