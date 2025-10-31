@@ -3,7 +3,7 @@ import fs from "fs"
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
-    if (!text?.trim()) return conn.reply(m.chat, `🍂 *Ingresa el enlace del video de YouTube*`, m)
+    if (!text?.trim()) return conn.reply(m.chat, `🍃 *Ingresa el enlace del video de YouTube*`, m)
 
     const api = `https://api.vreden.my.id/api/v1/download/youtube/video?url=${encodeURIComponent(text)}&quality=360`
     const res = await fetch(api)
@@ -20,7 +20,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const fileSize = head.headers.get("content-length")
     const fileMB = fileSize ? (Number(fileSize) / 1024 / 1024).toFixed(2) : 0
 
-    const caption = `🌿 *${title}*\n🍉 \`Duracion:\` ${duration.timestamp}`
+    const caption = `🪵 *${title}*\n🌳 \`Duracion:\` ${duration.timestamp}`
 
     await m.react('📥')
 
