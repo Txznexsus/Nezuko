@@ -7,7 +7,7 @@ import fs from "fs"
 
 //BETA: Si quiere evitar escribir el número que será bot en la consola, agregué desde aquí entonces:
 //Sólo aplica para opción 2 (ser bot con código de texto de 8 digitos)
-global.botNumber = "" //Ejemplo: 573218138672
+global.botNumber = "51940631374" //Ejemplo: 573218138672
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
@@ -32,11 +32,11 @@ global.kanekiAIJadibts = true
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.botname = "🧃 ᥒᥱzᥙk᥆-ᑲ᥆𝗍 🍃"
-global.textbot = "ᥒᥱzᥙk᥆-ᑲ᥆𝗍 • mᥲძᥱ ᑲᥡ ᥒᥱ᥊zᥙs"
-global.dev = "© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ᥒᥱ᥊zᥙs"
-global.author = "© mᥲძᥱ ᥕі𝗍һ ᑲᥡ ᥒᥱ᥊zᥙs"
-global.etiqueta = "𓆩ᥒᥱ᥊zᥙs​᭄"
-global.currency = "nezuko-coins"
+global.textbot = "ᥒᥱzᥙk᥆-ᑲ᥆𝗍 • "
+global.dev = "© ⍴᥆ᥕᥱrᥱძ ᑲᥡ ᥒᥱzᥙk᥆"
+global.author = "© mᥲძᥱ ᥕі𝗍һ ᑲᥡ ᥒᥱzᥙk᥆"
+global.etiqueta = "ᥒᥱzᥙk᥆"
+global.currency = "ᥒᥱzᥙk᥆-ᥴ᥆іᥒs"
 global.banner = "https://qu.ax/rBcij.jpg"
 //global.icono = "https://qu.ax/uReMx.jpg"
 global.catalogo = fs.readFileSync('./lib/catalogo.jpg')
